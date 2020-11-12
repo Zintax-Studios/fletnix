@@ -5,14 +5,38 @@
 
     <style>
         body {
-            background-size: cover;
-            background-image: url(data:image/jpeg;base64,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);
+            background-color: black;
+        }
+        ul#filmlist li {
+            display:inline;
+        }
+        ul#filmlist img{
+            width: 200px;
+            height: 130px;
         }
     </style>
 
     <body>
-        <h1>anime titties</h1>
-        <p>help</p>
+        <div style="background-color: gray;">
+            <hr>
+            <h1 style="color: red;">FletNix</h1>
+            <div style="position: absolute; left: 80%; top: 20px;">
+                <a style="color: red;" href="">over ons</a> 
+            </div>
+            <hr>
+        </div>
+        <div>
+            <ul id="filmlist">
+                <li>
+                    <a style="color: white;">film1</a>
+                    <img src = "images/mul.jpeg"/>
+                </li>
+                <li>
+                    <a style="color: white;">film2</a>
+                    <img src = "images/1917.jpeg"/>
+                </li>
+            </ul>
+        </div>      
     </body>
 
 </html>
