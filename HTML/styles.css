@@ -1,0 +1,10 @@
+body {
+    background-color: black;
+}
+ul#filmlist li {
+    display:inline;
+}
+ul#filmlist img{
+    width: 200px;
+    height: 130px;
+}
