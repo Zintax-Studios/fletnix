@@ -1,10 +1,25 @@
 body {
     background-color: black;
 }
-ul#filmlist li {
+h2{
+    color: white;
+}
+.upperbar{
+    background-color: gray;
+}
+.logoText{
+    color: red;
+}
+ul.filmlist li {
     display:inline;
 }
-ul#filmlist img{
+.filmlist img{
     width: 200px;
     height: 130px;
+    padding-right: 50px;
+    padding-top: 20px;
+}
+
+.filmList{
+    float: left;
 }
