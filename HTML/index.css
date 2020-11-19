@@ -1,0 +1,9 @@
+.filmlist img{
+    width: 200px;
+    height: 130px;
+    padding-right: 50px;
+    padding-top: 20px;
+}
+.filmlist {
+    float: left;
+}
