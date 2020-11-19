@@ -61,12 +61,6 @@ h2{
     padding: 25px;
 }
 
-.video{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 .AboutBody{
     padding: 25px;
 }
