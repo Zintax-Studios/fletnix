@@ -7,6 +7,7 @@
     color: white;
     display: grid;
     grid-column-gap: 1%;
+    grid-template-rows: repeat(4, 25%);
     grid-template-columns: repeat(5, 19%);
 }
 
@@ -14,4 +15,10 @@
     font-size: larger;
     text-align: center;
     background-color: gray;
+}
+
+footer{
+    display: flex;
+    justify-content: center;
+    background-color: rgba(160, 152, 152, 0.342);
 }
