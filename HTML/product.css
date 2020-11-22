@@ -1,0 +1,27 @@
+.text{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    color: rgb(173, 173, 173);
+
+    font-size: 150%;
+}
+
+.CoverImage{
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    
+}
+
+.CoverImage img{
+    display: flex;
+    max-width: 50%;
+}
+
+.main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
