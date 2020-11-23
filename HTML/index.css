@@ -17,9 +17,3 @@
     word-wrap: break-word;
     background-color: gray;
 }
-
-footer{
-    display: flex;
-    justify-content: center;
-    background-color: rgba(160, 152, 152, 0.342);
-}

@@ -43,3 +43,9 @@ header img{
     display: flex;
     color: red;
 }
+
+footer{
+    display: flex;
+    justify-content: center;
+    background-color: rgba(160, 152, 152, 0.342);
+}
