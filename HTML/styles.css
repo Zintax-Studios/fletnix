@@ -24,7 +24,11 @@ header img{
     top: 25%;
     height: 50%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+}
+
+.searchbar input{
+    font-size: 100%;
 }
 
 .upperbar {
@@ -32,14 +36,20 @@ header img{
     left: 2%;
     width: 96%;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
+}
+
+.buttonlist{
+    display: flex;
 }
 
 .button {
-    display: flex;
-    align-items: center;
+    margin: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    text-align: center;
     background-color: white;
-    padding: 30px;
     font-size: larger;
 }
 

@@ -8,22 +8,34 @@
 
 
     <body>
+        <!--De header hieronder is af, dit is de boventste bar van de website-->
         <header>
             <div class="upperbar">
-                <img src="images/logo.PNG" alt="logo">
+                <a href="index.html">
+                    <img src="images/logo.PNG" alt="logo">
+                </a>
+
                 <div class="searchbar">
-                    <form action="">
-                        <input type="text">
-                        <input type="submit">
+                    <form action="search.html">
+                        <input type="text", name="searchMessage">
+                        <input type="submit" id="go" value="Zoek">
                             
                     </form>
                 </div>
-                <div class="button">
-                    <a class="logoText" href="overons.html">over ons</a> 
-                </div>
                 
-            </div>
-            <hr>
+                <div class="buttonlist">
+                    <a href="overons.html" class="button">
+                        <div>
+                            overons
+                        </div>
+                    </a>
+                    <a href="login.html" class="button">
+                        <div>
+                            inloggen
+                        </div>
+                    </a>
+                </div>  
+            </div>                                         
         </header>
 
         <main>
