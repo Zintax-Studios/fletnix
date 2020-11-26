@@ -15,5 +15,10 @@
 
 .video iframe{
     display: flex;
+    justify-self: center;
     width: 100%;
+}
+
+.video iframe{
+    display: flex;
 }

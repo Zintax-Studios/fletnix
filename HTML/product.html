@@ -2,63 +2,75 @@
 <html>
     <head>
         <title>Netflix ripoff - About</title>
-        <link rel="stylesheet" href="product.css"/>
         <link rel="stylesheet" href="styles.css"/>
+        <link rel="stylesheet" href="product.css"/>
     </head>
 
     <body>
-        <header>
-            <div class="upperbar">
-                <img src="images/flexnixlogo.PNG" alt="logo">
-                <div>
-                    <form action="" class="searchbar">
-                        <input type="text">
-                        <input type="submit">
-                            
-                    </form>
-                </div>
-                <div class="button">
-                    <a class="logoText" href="overons.html">over ons</a> 
-                </div>
-                <div class="button">
-                    <a class="logoText" href="index.html">home</a> 
-                </div>
+        <div class="upperbar">
+            <a href="index.html">
+                <img src="images/logo.PNG" alt="logo">
+            </a>
+
+            <div class="searchbar">
+                <form action="search.html">
+                    <input type="text", name="searchMessage">
+                    <input type="submit" id="go" value="Zoek">
+                        
+                </form>
             </div>
-            <hr>
+            
+            <div class="buttonlist">
+                <a href="overons.html" class="button">
+                    <div>
+                        overons
+                    </div>
+                </a>
+                <a href="login.html" class="button">
+                    <div>
+                        inloggen
+                    </div>
+                </a>
+            </div>  
+        </div> 
         </header>
 
         <main class="main">
             <div class="text">
                 <h1>FilmTitel</h1>
-                <p1>samenvatting:</p1>
-                <p2>tijdsduur: 2:36:24</p2>
+                <dl>samenvatting:
+                    <li>je gaat dood</li>
+                </dl>
 
-                <!--list zijn nog een beetje een rommel-->
                 <dl>regisseurs
                     <li>regisseur 1</li>
                     <li>regisseur 2</li>
                 </dl>
+
                 <dl>cast
                     <li>hoofdrolspeler</li>
                     <li>acteur 1</li>
                     <li>acteur 2</li>
                     <li>acteur 3</li>
                 </dl>
-                <p5>publicatiejaar: 1965</p5>
+                <p1>publicatiejaar: 1965</p1>
+                <p1>tijdsduur: 2:36:24</p1>
             </div>
-
-            <!--css is opgesteld zodat hij meerdere plaatjes kan displayen op een rij-->
 
             <div class="CoverImage">
                 <img src="images/cover.jpg" alt="logo">
-                <img src="images/cover.jpg" alt="logo">
-                <img src="images/cover.jpg" alt="logo">
+
+                <a class="afspeelknop" href="player.html" >
+                    <img src="images/playknop.png" alt="logo">
+                    <p1 class="text">text</p1> 
+                </a>
             </div>
-            
         </main>
 
         <footer>
-
+            <div>
+                Footer placeholder
+            </div>
         </footer>
     </body>
 </html>
