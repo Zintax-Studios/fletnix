@@ -8,33 +8,51 @@
     </head>
 
     <body>
-        <div class="upperbar">
-            <hr>
-            <h1 class="logoText">FletNix</h1>
-            <div style="position: absolute; left: 80%; top: 20px;">
-                <a style="color: red;" href="overons.html">over ons</a> 
-                <a style="color: red;" href="player.html">afspelen</a>
-                <a style="color: red;" href="index.html">home</a> 
-                <a style="color: red;" href="product.html">product</a>
-                <a style="color: rgb(0, 255, 55);" href="https://hanaim-webtech.github.io/webtech/UX/beroepsproduct_UX.html">handboek</a> 
+        <header>
+            <div class="upperbar">
+                <div class="upperbar">
+                    <a href="index.html">
+                        <img src="images/logo.PNG" alt="logo">
+                    </a>
+
+                    <div class="searchbar">
+                        <form action="search.html">
+                            <input type="text", name="searchMessage">
+                            <input type="submit" id="go" value="Zoek">
+                            
+                        </form>
+                    </div>
+                
+                    <div class="buttonlist">
+                        <a href="overons.html" class="button">
+                            <div>
+                                overons
+                            </div>
+                        </a>
+                        <a href="login.html" class="button">
+                            <div>
+                                inloggen
+                            </div>
+                        </a>
+                    </div>  
+                </div> 
             </div>
-            <hr>
-        </div>
+        </header>
+        <main>
+            <div class="AboutBody">
+                <div class="AboutFletnix">
+                    <h1 class="AboutFletnixTitle">Over Fletnix</h1>
+                    <p1 class="AboutFletnixText">epische site</p1>
+                </div>
 
-        <div class="AboutBody">
-            <div class="AboutFletnix">
-               <h1 class="AboutFletnixTitle">Over Fletnix</h1>
-               <p1 class="AboutFletnixText">epische site</p1>
+                <div class="AboutUs">
+                    <h1 class="AboutUsTitle">Over ons</h1>
+                    <p1 class="AboutUsText">Tom(links), Sven(midden-Top) en Steijn(links-onder, haha kut mosterd), jaimy(rechts-onder, kerryd het team)</p1>
+
+                    <img src="images/kaas.png" alt="img">
+                </div>
             </div>
-
-            <div class="AboutUs">
-                <h1 class="AboutUsTitle">Over ons</h1>
-                <p1 class="AboutUsText">Tom(links), Sven(midden-Top) en Steijn(links-onder, haha kut mosterd), jaimy(rechts-onder, kerryd het team)</p1>
-
-                <img src="images/kaas.png" alt="img">
-            </div>
-        </div>
-
+        </main>
     </body>
     
 </html>

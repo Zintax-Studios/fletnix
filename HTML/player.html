@@ -9,22 +9,31 @@
     <body>
         <header>
             <div class="upperbar">
-                <img src="images/flexnixlogo.PNG" alt="logo">
-                <div>
-                    <form action="" class="searchbar">
-                        <input type="text">
-                        <input type="submit">
+                <a href="index.html">
+                    <img src="images/logo.PNG" alt="logo">
+                </a>
+
+                <div class="searchbar">
+                    <form action="search.html">
+                        <input type="text", name="searchMessage">
+                        <input type="submit" id="go" value="Zoek">
                             
                     </form>
                 </div>
-                <div class="button">
-                    <a class="logoText" href="overons.html">over ons</a> 
-                </div>
-                <div class="button">
-                    <a class="logoText" href="index.html">home</a> 
-                </div>
-            </div>
-            <hr>
+                
+                <div class="buttonlist">
+                    <a href="overons.html" class="button">
+                        <div>
+                            overons
+                        </div>
+                    </a>
+                    <a href="login.html" class="button">
+                        <div>
+                            inloggen
+                        </div>
+                    </a>
+                </div>  
+            </div> 
         </header>
 
         <main>
@@ -32,7 +41,9 @@
             <div class="playknop">
                 <!--img src="images/afspeelknop.png" alt="||"-->
             </div>
-            <iframe src="https://www.youtube.com/embed/MNkSWk7GaN0" frameborder="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="video">
+                <iframe src="https://www.youtube.com/embed/zrAUfgESlcI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
         </main>
 
         <footer>
