@@ -3,6 +3,7 @@
 <html>
 
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="search.css">
 </head>
@@ -17,7 +18,7 @@
     
                 <div class="searchbar">
                     <form action="search.html">
-                        <input type="text", name="searchMessage">
+                        <input type="text" name="searchMessage">
                         <input type="submit" id="go" value="Zoek">
                             
                     </form>
@@ -39,15 +40,19 @@
         </header>
 
         <main>
-            <form>
-                <label for="18+">18+</label>
-                <input id="18+" type="checkbox">
-                <label for="actie">actie</label>
-                <input id="actie" type="checkbox">
-                <input type="submit" value="filter">
-            </form>
             <h1>Resultaten:</h1>
             <div class="filmlist">
+                <form class="filterlist">
+                    <label for="18+">18+</label>
+                    <input id="18+" type="checkbox">
+                    <label for="actie">actie</label>
+                    <input id="actie" type="checkbox">
+                    <label for="horror">horror</label>
+                    <input id="horror" type="checkbox">
+                    <label for="nigga">zwart</label>
+                    <input id="nigga" type="checkbox">
+                    <input class="submitbutton" type="submit" value="filter">
+                </form>
                 <div>
                     <a href="product.html">
                         Kim en de dinosaurus

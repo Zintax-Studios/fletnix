@@ -8,7 +8,7 @@
     display: grid;
     grid-column-gap: 1%;
     grid-template-rows: repeat(4, 25%);
-    grid-template-columns: repeat(5, 19%);
+    grid-template-columns: 10% repeat(5, 17%);
 }
 
 .filmlist div{
@@ -24,4 +24,21 @@ h1{
 
 label{
     color: white;
+}
+
+.filterlist{
+    grid-row: 1 / 2;
+    grid-column: span;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.filmlist input{
+    margin-bottom: 5%;
+    margin-left: 5%;
+}
+
+.submitbutton{
+    align-self: center;
 }
