@@ -21,7 +21,7 @@
     height: 100%;
 }
 
-.video iframe{
+.video source{
     display: flex;
 }
 

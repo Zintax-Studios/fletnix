@@ -16,17 +16,19 @@
 
 .CoverImage img{
     display: flex;
-    max-width: 60%;
+    max-width: 100%;
 }
 
 .CoverImage a{
-    font-size: 150%;
+    font-size: 300%;
 }
 
 .main{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
+    max-width: 100%;
 }
 
 .afspeelknop{
@@ -34,7 +36,7 @@
     flex-direction: column;
     align-self: flex-end;
 
-    width: 100%;
+    max-width: 100%;
 }
 
 .afspeelknop img{
@@ -44,4 +46,9 @@
 
 text{
     color: rgb(79, 74, 83);
+    max-width: 50%;
+}
+
+li{
+    max-width: 50%;
 }
