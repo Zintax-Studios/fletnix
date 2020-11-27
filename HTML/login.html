@@ -32,6 +32,11 @@
                             inloggen
                         </div>
                     </a>
+                    <a href="profile.html" class="button">
+                        <div>
+                            Profiel
+                        </div>
+                    </a>
                 </div>
             </div>                                         
         </header>
@@ -50,8 +55,12 @@
             <div>
                 <h1>Registreer</h1>
                 <form class="registerform" action="index.html">
-                    <label for="Username">Username</label>
-                    <input id="Username" type="text">
+                    <label for="name">Volledige naam</label>
+                    <input id="name" type="text">
+                    <label for="username">gebruikersnaam</label>
+                    <input id="username" type="text">
+                    <label for="country">Land</label>
+                    <input id="country" type="text">
                     <label for="email">Email</label>
                     <input id="email" type="email">
                     <label for="Password">Password</label>
@@ -62,6 +71,14 @@
                         <option value="1 maand €2">
                         <option value="2 maand €5">
                     </datalist>
+                    <label for="payment">betaal methode</label>
+                    <input id="payment" list="paymentlist">
+                    <datalist id="paymentlist">
+                        <option value="paypal">
+                        <option value="sven">
+                    </datalist>
+                    <label for="paymentnum">rekening nummer</label>
+                    <input id="paymentnum" type="text">
                     <input type="submit" value="registreer!">
                 </form>
             </div>
