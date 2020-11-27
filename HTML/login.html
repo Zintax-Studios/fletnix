@@ -2,8 +2,9 @@
 
 <html lang="en">
     <head>
-        <title>Bella dolfijn bath water</title>
+        <link rel="icon" href="images/logo.png">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Fletnix - Login</title>
         <link rel="stylesheet" href="styles.css">
         <link rel="stylesheet" href="login.css">
     </head>
@@ -32,6 +33,11 @@
                             inloggen
                         </div>
                     </a>
+                    <a href="profile.html" class="button">
+                        <div>
+                            Profiel
+                        </div>
+                    </a>
                 </div>
             </div>                                         
         </header>
@@ -50,18 +56,33 @@
             <div>
                 <h1>Registreer</h1>
                 <form class="registerform" action="index.html">
-                    <label for="Username">Username</label>
-                    <input id="Username" type="text">
+                    <label for="name">Volledige naam</label>
+                    <input id="name" type="text" name="name">
+                    <label for="username">gebruikersnaam</label>
+                    <input id="username" type="text" name="username">
+                    <label for="country">Land</label>
+                    <input id="country" type="text" name="country">
                     <label for="email">Email</label>
-                    <input id="email" type="email">
+                    <input id="email" type="email" name="email">
                     <label for="Password">Password</label>
-                    <input id="Password" type="password">
+                    <input id="Password" type="password" name="password">
+                    <label for="password2">bevestig password</label>
+                    <input id="password2" type="text">
                     <label for="subscription">Abbonement</label>
-                    <input list="subs" id="subscription">
+                    <input list="subs" id="subscription" name="subs">
                     <datalist id="subs">
                         <option value="1 maand €2">
                         <option value="2 maand €5">
+                            <option value="4 maand €13">
                     </datalist>
+                    <label for="payment">betaal methode</label>
+                    <input id="payment" list="paymentlist" name="payment">
+                    <datalist id="paymentlist">
+                        <option value="paypal">
+                        <option value="sven">
+                    </datalist>
+                    <label for="paymentnum">rekening nummer</label>
+                    <input id="paymentnum" type="text">
                     <input type="submit" value="registreer!">
                 </form>
             </div>

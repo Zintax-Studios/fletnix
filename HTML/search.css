@@ -12,6 +12,7 @@
 }
 
 .filmlist div{
+    text-decoration: none;
     font-size: larger;
     text-align: center;
     word-wrap: break-word;
