@@ -14,6 +14,10 @@
     max-height: 100%;
 }
 
+.filmlist div a{
+    text-decoration: none;
+}
+
 .filmlist div{
     font-size: larger;
     text-align: center;
