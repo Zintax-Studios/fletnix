@@ -1,0 +1,11 @@
+{
+    "name": "PHP",
+    "dockerComposeFile": ["docker-compose.yml"],
+    "service": "webserver",
+    "workspaceFolder": "/srv/webserver",
+    "shutdownAction": "none",
+    "extensions": [
+        "sleistner.vscode-fileutils",
+        "timonwong.shellcheck",
+    ]
+}

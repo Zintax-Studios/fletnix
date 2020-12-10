@@ -1,0 +1,15 @@
+
+
+.colorwhite{
+    color: white;
+}
+
+.bigtext{
+    font-size: 600%;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
