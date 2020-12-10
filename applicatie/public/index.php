@@ -13,7 +13,7 @@
         <header>
             <div class="upperbar">
                 <a href="index.php">
-                    <img src="images/logo.PNG" alt="logo">
+                    <img src="images/logo.png" alt="logo">
                 </a>
 
                 <div class="searchbar">

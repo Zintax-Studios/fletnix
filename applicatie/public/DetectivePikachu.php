@@ -1,8 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE php>
+<php lang="en">
     <head>
         <link rel="icon" href="images/logo.png">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="Content-Type" content="text/php; charset=utf-8">
         <title>Fletnix - FilmInfo</title>
         <link rel="stylesheet" href="styles.css"/>
         <link rel="stylesheet" href="product.css"/>
@@ -11,12 +11,12 @@
     <body>
         <header>
             <div class="upperbar">
-                <a href="index.html">
+                <a href="index.php">
                     <img src="images/logo.PNG" alt="logo">
                 </a>
 
                 <div class="searchbar">
-                    <form action="search.html">
+                    <form action="search.php">
                         <input type="text" name="searchMessage">
                         <input type="submit" id="go" value="Zoek">
                             
@@ -24,17 +24,17 @@
                 </div>
                 
                 <div class="buttonlist">
-                    <a href="overons.html" class="button">
+                    <a href="overons.php" class="button">
                         <div>
                             overons
                         </div>
                     </a>
-                    <a href="login.html" class="button">
+                    <a href="login.php" class="button">
                         <div>
                             inloggen
                         </div>
                     </a>
-                    <a href="profile.html" class="button">
+                    <a href="profile.php" class="button">
                         <div>
                             Profiel
                         </div>
@@ -88,7 +88,7 @@
             </div>
 
             <div class="CoverImage">
-                <a class="afspeelknop" href="player.html" >
+                <a class="afspeelknop" href="player.php" >
                     <img src="images/cover.jpg" alt="logo">
                     <img src="images/playknop.png" alt="afspeelknop">
                      
@@ -101,4 +101,4 @@
             </div>
         </footer>
     </body>
-</html>
+</php>
