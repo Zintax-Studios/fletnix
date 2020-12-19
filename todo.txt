@@ -1,0 +1,30 @@
+TODO:
+
+1. Maak login php page, redirect login naar de page
+	- Vanaf login page redirect naar home, tenzij laatste pagina een product pagina was.
+
+2. Maak genre lijst op de home page
+	- een genre is laatst gekeken, die laat de lijst zien met laatst bekeken films uit de database
+	- (optioneel) favoriete genre
+
+3. Zorg ervoor de de search werkt, gooi gewoon filters en search info in de querry.
+	- Regisseur
+	- publicatiejaar
+	- woord uit titel (where titel = %woord%)
+	- alles moet in combinatie gefiltert kunnen worden
+
+4. Van een gekozen mediaproduct moet alle info worden laten zien
+	- Cast
+	- Duur
+	- Samenvatting
+	- Regisseur
+	- Titel
+	- Afbeelding
+
+5. Bespreken met Meron hoe we plaatjes en video's in de database gaan stoppen
+	- Het is een eis, maar als we de database aanpassen is de database van meron niet meer geldig voor onze website.
+
+6. Inlog knop en profiel page moeten laten zien dat je bent ingelogt
+
+7. Verzin nog wat leuke features. Gooien we gewoon in #features
+	- TODO: features implanteren (optioneel)

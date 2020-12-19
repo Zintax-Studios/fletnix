@@ -6,12 +6,8 @@
 
 .filmlist{
     color: white;
-    display: grid;
-    grid-column-gap: 1%;
-    grid-row-gap: 5%;
-    grid-template-rows: repeat(4, 25%);
-    grid-template-columns: repeat(5, 19%);
-    max-height: 100%;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .filmlist div a{
