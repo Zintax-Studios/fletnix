@@ -10,40 +10,9 @@
     </head>
 
     <body>
-        <header>
-            <div class="upperbar">
-                <div class="upperbar">
-                    <a href="index.php">
-                        <img src="images/logo.PNG" alt="logo">
-                    </a>
-
-                    <div class="searchbar">
-                        <form action="search.php">
-                            <input type="text" name="searchMessage">
-                            <input type="submit" id="go" value="Zoek">
-                        </form>
-                    </div>
-                
-                    <div class="buttonlist">
-                        <a href="overons.php" class="button">
-                            <div>
-                                overons
-                            </div>
-                        </a>
-                        <a href="login.php" class="button">
-                            <div>
-                                inloggen
-                            </div>
-                        </a>
-                        <a href="profile.php" class="button">
-                            <div>
-                                Profiel
-                            </div>
-                        </a>
-                    </div>  
-                </div> 
-            </div>
-        </header>
+        <?php
+            require("shared/header.html");
+        ?>
 
         <main>
             <div class="AboutBody">
