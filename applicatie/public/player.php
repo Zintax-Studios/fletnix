@@ -1,4 +1,9 @@
 <!DOCTYPE php>
+
+<?php
+    session_start();
+?>
+
 <php lang="en">
     <head>
         <link rel="icon" href="images/logo.png">

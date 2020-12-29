@@ -1,5 +1,10 @@
 <!DOCTYPE php>
 
+<?php
+    session_start();
+?>
+
+
 <php lang="en">
 
     <head>
@@ -32,6 +37,9 @@
                 <label for="mail">mailadress</label>
                 <input id="mail" type="email" value="Tom Janssen">
             </form>
+            <?php
+                session_destroy();
+            ?>
         </main>
     </body>
 </php>

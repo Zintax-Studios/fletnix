@@ -24,7 +24,7 @@
         foreach($films as $film)
         {
             $image_src = 'images/cover3.jpg';
-            $image = "<img src=$image_src alt='img'>";
+            $image = "<img src='$image_src' alt='img'>";
 
             $link = 'https://discord.gg/3SjzP4cj'; //:)
 
