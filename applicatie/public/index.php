@@ -8,7 +8,7 @@
     {
         global $dbh;
 
-        $query = $dbh -> prepare('SELECT title FROM Movie WHERE movie_id < 12 GROUP BY title');
+        $query = $dbh -> prepare('SELECT title FROM Movie WHERE movie_id < 10000 GROUP BY title');
 
         $query->execute();
 
@@ -24,9 +24,12 @@
 
         foreach($films as $film)
         {
-            $image_src = 'images/cover.jpg';
-            $image = "<img src=" . $image_src . " alt='img'>";
-            $html = $html . "<div><a>" . $film['title'] . $image . "</a></div>";
+            $image_src = 'images/cover3.jpg';
+            $image = "<img src=$image_src alt='img'>";
+
+            $link = 'https://discord.gg/3SjzP4cj'; //:)
+
+            $html = $html . "<div><a href=$link>" . $film['title'] . $image . "</a></div>";
         }        
 
         return $html;
