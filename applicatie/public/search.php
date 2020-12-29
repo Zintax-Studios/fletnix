@@ -4,6 +4,7 @@
     require("phpfunction/SQL_connection.php");
     require("shared/header.html");
 
+    //gets
     function getMovies($zoekwoord)
     {
         global $dbh;
@@ -17,6 +18,20 @@
         return $result;
     }
 
+    function getGenres($zoekwoord)
+    {
+        global $dbh;
+
+        $query = $dbh -> prepare("SELECT genre_name FROM genre ORDER BY genre_name");
+
+        $query->execute();
+
+        $result = $query->fetchALL();
+
+        return $result;
+    }
+
+    //tohtmls
     function filmsNaarHTMl($films) {
         $html = '';
         
@@ -33,7 +48,22 @@
         return $html;
     }  
 
+    function genresNaarHTML($genres){
+        $html = '';
+
+        foreach($genres as $genre)
+        {
+            
+            $html = "";
+        } 
+        
+        return $html;
+    }
+
     $filmlijst = getMovies($_GET['searchMessage']);
+
+    $genrelijst = getGenres();
+    
 ?>
 
 <!DOCTYPE php>
@@ -51,21 +81,35 @@
             </div>
 
             <form class="filterlist">
-                    <label for="18+">18+</label>
-                    <input id="18+" type="checkbox">
-                    <label for="actie">actie</label>
-                    <input id="actie" type="checkbox">
-                    <label for="horror">horror</label>
-                    <input id="horror" type="checkbox">
-                    <label for="geweld">geweld</label>
-                    <input id="geweld" type="checkbox">
-                    <label for="pubyearmin">publicatie jaar minimum</label>
-                    <input type="text" id="pubyearmin">
-                    <label for="pubyearmax">publicatie jaar maximum</label>
-                    <input type="text" id="pubyearmax">
-                    <label for="reg">regisseur</label>
-                    <input id="reg" type="text">
-                    <input class="submitbutton" type="submit" value="filter">
+                <div class="genres">
+
+                </div>
+
+                <div class="jaar">
+
+                </div>
+
+                <div class="regisseur">
+                    
+                </div>
+
+                <label for="18+">18+</label>
+                <input id="18+" type="checkbox">
+                <label for="actie">actie</label>
+                <input id="actie" type="checkbox">
+                <label for="horror">horror</label>
+                <input id="horror" type="checkbox">
+                <label for="geweld">geweld</label>
+                <input id="geweld" type="checkbox">
+
+                <label for="pubyearmin">publicatie jaar minimum</label>
+                <input type="text" id="pubyearmin">
+                <label for="pubyearmax">publicatie jaar maximum</label>
+                <input type="text" id="pubyearmax">
+
+                <label for="reg">regisseur</label>
+                <input id="reg" type="text">
+                <input class="submitbutton" type="submit" value="filter">
             </form>
         </main>
 
