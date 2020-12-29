@@ -53,17 +53,18 @@
                         <label for="subscription">Abbonement</label>
                         <input list="subs" id="subscription" name="sub">
                         <datalist id="subs">
-                            <option value="1 maand €2">
-                            <option value="2 maand €5">
-                            <option value="4 maand €13">
+                            <option value="basic">
+                            <option value="premium">
+                            <option value="pro">
                         </datalist>
                     </div>
                     <div>
                         <label for="payment">betaal methode</label>
                         <input id="payment" list="paymentlist" name="payment_method">
                         <datalist id="paymentlist">
-                            <option value="paypal">
-                            <option value="sven">
+                            <option value="Amex">
+                            <option value="Mastercard">
+                            <option value="Visa">
                         </datalist>
                     </div>
                     <div>
@@ -74,7 +75,6 @@
                     <input type="submit" value="registreer!">
                     <?php
                         if(isset($_SESSION['error'])){
-                            echo 'error placeholder';
                             echo $_SESSION['error'];
                             unset($_SESSION['error']);
                         }
