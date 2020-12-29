@@ -17,19 +17,20 @@
         return $result;
     }
 
+    $filmlijst = getMovies();
+
     function filmsNaarHTMl($films) {
-        $html = ' ';
-        foreach ($films as $film) {
-            $html = $html . " " . $film['title'];
-        }
+        $html = '';
+
+        foreach($films as $film)
+        {
+            $image_src = 'images/cover.jpg';
+            $image = "<img src=" . $image_src . " alt='img'>";
+            $html = $html . "<div><a>" . $film['title'] . $image . "</a></div>";
+        }        
 
         return $html;
     }
-
-    $yes = filmsNaarHTMl(getMovies());
-    //print($yes);
-
-    //<h1> Film titel </h1>
 ?>
 
 <!DOCTYPE php>
@@ -46,8 +47,10 @@
             require("shared/header.html");
         ?>
 
-        <main style="color:gray;">
-            <?=$yes?>
+        <main>
+            <div class ="filmlist">
+                <?=filmsNaarHTMl($filmlijst)?>
+            </div>
         </main>
 
         <footer>
