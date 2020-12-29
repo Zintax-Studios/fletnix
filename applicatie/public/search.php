@@ -46,13 +46,11 @@
 </head>
     <body>
         <main>
-            <div class ="filmlist">
+            <div class="filmlist">
                 <?=filmsNaarHTMl($filmlijst)?>
             </div>
 
-            <h1>Resultaten:</h1>
-            <div class="filmlist">
-                <form class="filterlist">
+            <form class="filterlist">
                     <label for="18+">18+</label>
                     <input id="18+" type="checkbox">
                     <label for="actie">actie</label>
@@ -68,14 +66,7 @@
                     <label for="reg">regisseur</label>
                     <input id="reg" type="text">
                     <input class="submitbutton" type="submit" value="filter">
-                </form>
-                <div>
-                    <a href="DetectivePikachu.php">
-                        Pokemon Detective Pikachu
-                        <img src="images/cover3.jpg" alt="img">
-                    </a>
-                </div>
-            </div>
+            </form>
         </main>
 
         <footer>
