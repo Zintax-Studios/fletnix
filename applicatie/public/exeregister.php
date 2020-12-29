@@ -84,5 +84,7 @@
         $_SESSION['error'] = $error;
         header("Location: register.php");
     }
+
+    header("Location: login.php");
 ?>
     

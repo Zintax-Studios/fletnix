@@ -1,6 +1,7 @@
 main{
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
 }
 
@@ -10,10 +11,12 @@ h1{
 }
 
 .loginform{
-    padding: 10%;
+    padding: 2%;
     text-align: center;
     display: flex;
     flex-direction: column;
+    width: 30%;
+    background-color: grey;
 }
 
 label{
@@ -22,9 +25,10 @@ label{
 }
 
 .loginform input{
-    width: 30%;
+    width: 60%;
     margin-top: 3%;
-    margin-bottom: 10%;
+    margin-bottom: 2%;
+    align-self: center;
 }
 
 .registerform{

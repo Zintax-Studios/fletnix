@@ -3,7 +3,6 @@
 
     require_once("phpfunction/SQL_connection.php");
 
-    //returns array of movie info, idk i'm just trying shit out
     function getMovies()
     {
         global $dbh;
@@ -25,8 +24,11 @@
         foreach($films as $film)
         {
             $image_src = 'images/cover3.jpg';
-            $image = "<img src=" . $image_src . " alt='img'>";
-            $html = $html . "<div><a>" . $film['title'] . $image . "</a></div>";
+            $image = "<img src='$image_src' alt='img'>";
+
+            $link = 'https://discord.gg/3SjzP4cj'; //:)
+
+            $html = $html . "<div><a href=$link>" . $film['title'] . $image . "</a></div>";
         }        
 
         return $html;
@@ -48,9 +50,18 @@
         ?>
 
         <main>
+            <!--Recent bekeken-->
             <div class ="filmlist">
                 <?=filmsNaarHTMl($filmlijst)?>
             </div>
+
+            <!--Willekeurige films-->
+
+            <!--films met willekeurig genre #1-->
+
+            <!--films met willekeurig genre #2-->
+
+            <!--films met willekeurig genre #3-->
         </main>
 
         <footer>

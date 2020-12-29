@@ -1,7 +1,43 @@
+<?php
+    session_start();
+
+    require("phpfunction/SQL_connection.php");
+    require("shared/header.html");
+
+    function getMovies($zoekwoord)
+    {
+        global $dbh;
+
+        $query = $dbh -> prepare("SELECT title FROM Movie WHERE title like '%$zoekwoord%' GROUP BY title");
+
+        $query->execute();
+
+        $result = $query->fetchALL();
+
+        return $result;
+    }
+
+    function filmsNaarHTMl($films) {
+        $html = '';
+        
+        foreach($films as $film)
+        {
+            $image_src = 'images/cover3.jpg';
+            $image = "<img src=$image_src alt='img'>";
+        
+            $link = 'https://discord.gg/3SjzP4cj'; //:)
+        
+            $html = $html . "<div><a href=$link>" . $film['title'] . $image . "</a></div>";
+        }        
+        
+        return $html;
+    }  
+
+    $filmlijst = getMovies($_GET['searchMessage']);
+?>
+
 <!DOCTYPE php>
-
-<php lang="en">
-
+<html lang="en">
 <head>
     <link rel="icon" href="images/logo.png">
     <meta http-equiv="Content-Type" content="text/php; charset=utf-8">
@@ -9,11 +45,11 @@
     <link rel="stylesheet" href="CSS/search.css">
 </head>
     <body>
-        <?php
-            require("shared/header.html");
-        ?>
-
         <main>
+            <div class ="filmlist">
+                <?=filmsNaarHTMl($filmlijst)?>
+            </div>
+
             <h1>Resultaten:</h1>
             <div class="filmlist">
                 <form class="filterlist">
