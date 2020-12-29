@@ -8,3 +8,5 @@
     $payment_method = $_POST['payment_method'];
     $card = $_POST['card'];
     
+?>
+    

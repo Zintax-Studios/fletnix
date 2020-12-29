@@ -4,8 +4,7 @@
         <link rel="icon" href="images/logo.png">
         <meta http-equiv="Content-Type" content="text/php; charset=utf-8">
         <title>Fletnix - Film</title>
-        <link rel="stylesheet" href="player.css"/>
-        <link rel="stylesheet" href="styles.css"/>
+        <link rel="stylesheet" href="CSS/player.css"/>
     </head>
 
     <body>

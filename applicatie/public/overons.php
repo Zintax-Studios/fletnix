@@ -5,8 +5,7 @@
         <link rel="icon" href="images/logo.png">
         <meta http-equiv="Content-Type" content="text/php; charset=utf-8">
         <title>Fletnix - Over</title>
-        <link rel="stylesheet" href="overons.css"/>
-        <link rel="stylesheet" href="styles.css"/>
+        <link rel="stylesheet" href="CSS/overons.css"/>
     </head>
 
     <body>

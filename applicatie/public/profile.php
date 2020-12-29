@@ -6,8 +6,7 @@
         <link rel="icon" href="images/logo.png">
         <meta http-equiv="Content-Type" content="text/php; charset=utf-8">
         <title>Fletnix - Profiel</title>
-        <link rel="stylesheet" href="styles.css">
-        <link rel="stylesheet" href="profile.css">
+        <link rel="stylesheet" href="CSS/profile.css">
     </head>
 
     <body>

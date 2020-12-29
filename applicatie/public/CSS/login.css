@@ -28,7 +28,9 @@ label{
 .registerform{
     text-align: center;
     display: flex;
-    flex-direction: column;
+    align-content:space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .registerform input{

@@ -6,8 +6,7 @@
     <link rel="icon" href="images/logo.png">
     <meta http-equiv="Content-Type" content="text/php; charset=utf-8">
     <title>Fletnix - Zoek</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="search.css">
+    <link rel="stylesheet" href="CSS/search.css">
 </head>
     <body>
         <?php
