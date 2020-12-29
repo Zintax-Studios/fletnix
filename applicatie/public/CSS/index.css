@@ -1,24 +1,17 @@
-.filmlist img{
-    position: relative;
-    width: 100%;
-    height: 80%;
-}
-
 .filmlist{
-    color: white;
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .filmlist div a{
-    text-decoration: none;
-}
-
-.filmlist div{
-    font-size: larger;
-    text-align: center;
-    word-wrap: break-word;
-    background-color: gray;
+    margin: 1%;
+    background-color: grey;
+    padding: 2%;
+    color: white;
+    display: flex;
+    flex-direction: column;
 }
 
 main{

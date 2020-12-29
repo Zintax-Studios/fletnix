@@ -1,6 +1,5 @@
 <?php
 
-
     $hostname = 'host.docker.internal';
 
     $dbname = 'FLETNIX_DOCENT';
