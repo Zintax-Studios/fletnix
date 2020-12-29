@@ -37,10 +37,9 @@
     }
     else{
         $loggedin = true;
+        $_SESSION['username'] = $username;
+        $_SESSION['password'] = $password;
     }
-
-    $_SESSION['username'] = $username;
-    $_SESSION['password'] = $password;
 
     function err($error){
         $_SESSION['error'] = $error;
