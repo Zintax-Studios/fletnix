@@ -3,12 +3,11 @@
 
     require_once("phpfunction/SQL_connection.php");
 
-    //returns array of movie info, idk i'm just trying shit out
     function getMovies()
     {
         global $dbh;
 
-        $query = $dbh -> prepare('SELECT title FROM Movie WHERE movie_id < 10000 GROUP BY title');
+        $query = $dbh -> prepare('SELECT title FROM Movie WHERE movie_id < 1000 GROUP BY title');
 
         $query->execute();
 
@@ -51,9 +50,18 @@
         ?>
 
         <main>
+            <!--Recent bekeken-->
             <div class ="filmlist">
                 <?=filmsNaarHTMl($filmlijst)?>
             </div>
+
+            <!--Willekeurige films-->
+
+            <!--films met willekeurig genre #1-->
+
+            <!--films met willekeurig genre #2-->
+
+            <!--films met willekeurig genre #3-->
         </main>
 
         <footer>
