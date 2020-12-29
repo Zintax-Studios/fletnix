@@ -107,24 +107,3 @@
         </footer>
     </body>
 </html>
-
-<?php
-                                if(isset($_SESSION['username'])){
-                                    echo "
-                                        <a href='profile.php' class='button'>
-                                            <div>
-                                                " . $_SESSION['username'] . "
-                                            </div>
-                                        </a>
-                                    ";
-                                }
-                                else{
-                                    echo "
-                                        <a href='login.php' class='button'>
-                                            <div>
-                                                inloggen
-                                            </div>
-                                        </a>
-                                    ";
-                                }
-                            ?>
