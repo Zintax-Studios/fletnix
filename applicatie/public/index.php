@@ -39,7 +39,7 @@
         <link rel="icon" href="images/logo.png">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>Fletnix - Main</title>
-        <link rel="stylesheet" href="index.css"/>
+        <link rel="stylesheet" href="CSS/index.css"/>
     </head>
 
     <body>

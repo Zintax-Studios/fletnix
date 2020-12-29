@@ -5,8 +5,7 @@
         <link rel="icon" href="images/logo.png">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>Fletnix - Login</title>
-        <link rel="stylesheet" href="styles.css">
-        <link rel="stylesheet" href="login.css">
+        <link rel="stylesheet" href="CSS/login.css">
     </head>
     <body>
         <?php

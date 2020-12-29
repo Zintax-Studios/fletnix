@@ -1,5 +1,23 @@
 TODO:
 
+--------------------------------------
+
+BELANGRIJK:
+
+1. Maak de broncode neter
+	- Zorg ervoor dat de header in 1 document staat en niet wordt herhaalt
+	- Zelfde bij footer
+
+2. Fix index.php
+	- Misschien gebruik maken van meerdere flexboxen onderelkaar om genres te verdelen
+
+3. Fix header
+	- fix responsivness
+	- fix knop feedback
+	- Verdander login knop
+
+--------------------------------------
+
 1. Maak login php page, redirect login naar de page
 	- Vanaf login page redirect naar home, tenzij laatste pagina een product pagina was.
 
