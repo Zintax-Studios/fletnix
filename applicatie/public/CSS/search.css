@@ -4,7 +4,7 @@ main{
     justify-content: space-between;
 }
 
-.filterlist{
+.filterlist div{
     color: white;
     display: flex;
     flex-direction: column;
