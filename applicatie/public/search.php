@@ -9,7 +9,7 @@
     {
         global $dbh;
 
-        $query = $dbh -> prepare("SELECT title FROM Movie WHERE title like '%$zoekwoord%' GROUP BY title");
+        $query = $dbh -> prepare("SELECT title, movie_id FROM Movie WHERE title like '%$zoekwoord%'");
 
         $query->execute();
 
@@ -40,7 +40,7 @@
             $image_src = 'images/cover3.jpg';
             $image = "<img src=$image_src alt='img'>";
         
-            $link = 'https://discord.gg/3SjzP4cj'; //:)
+            $link = 'product.php?id=' . $film['movie_id']; //:)
         
             $html = $html . "<div><a href=$link>" . $film['title'] . $image . "</a></div>";
         }        
@@ -62,7 +62,7 @@
 
     $filmlijst = getMovies($_GET['searchMessage']);
 
-    $genrelijst = getGenres();
+    //$genrelijst = getGenres();
     
 ?>
 

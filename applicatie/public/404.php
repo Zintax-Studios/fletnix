@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+
+<html>
+
+    <?php
+        require('shared/header.html');
+    ?>
+
+    <main>
+        <h1>404: Not Found</h1>
+        <div>Oh no, we didn't find the thing you were looking for! So there u go you will get an easteregg!</div>
+        <img src='images/oppernerd.PNG'>
+    </main>
+
+</html>

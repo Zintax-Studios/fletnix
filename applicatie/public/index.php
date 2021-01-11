@@ -1,13 +1,13 @@
 <?php
     session_start();
 
-    require_once("phpfunction/SQL_connection.php");
+    require("phpfunction/SQL_connection.php");
 
     function getMovies()
     {
         global $dbh;
 
-        $query = $dbh -> prepare('SELECT title FROM Movie WHERE movie_id < 1000 GROUP BY title');
+        $query = $dbh -> prepare('SELECT * FROM Movie WHERE movie_id < 1000');
 
         $query->execute();
 
@@ -23,13 +23,13 @@
 
         foreach($films as $film)
         {
-            $image_src = 'images/cover3.jpg';
+            $image_src = 'images/placeholder.png';
             $image = "<img src='$image_src' alt='img'>";
 
-            $link = 'https://discord.gg/3SjzP4cj'; //:)
+            $link = 'product.php?id=' . $film['movie_id']; 
 
             $html = $html . "<div><a href=$link>" . $film['title'] . $image . "</a></div>";
-        }        
+        }  
 
         return $html;
     }
