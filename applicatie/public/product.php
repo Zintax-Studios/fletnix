@@ -21,7 +21,7 @@
     $query = $dbh->prepare("SELECT * 
                             FROM Movie 
                             WHERE Movie.movie_id = $id");
-    var_dump($query);
+                            
     $query->execute();
 
     $result = $query->fetchAll();
@@ -54,8 +54,6 @@
     $result = $query->fetchAll();
 
     $movie['director'] = $result;
-
-    var_dump($movie);
 ?>
 
 <html>
@@ -72,11 +70,15 @@
                 <div class="title">
                     <h1><?php echo $movie['title']; ?></h1>
                     <?php echo $movie['description']; ?>
+                    <h2>Year</h2>
+                    <?php echo $movie['publication_year']; ?>
                 </div>
                 <div class="info">
                 </div>
                 <div class="cast">
-                    <div><h2>Cast: </h2> <?php foreach($movie['cast'] as $person){ echo $person['firstname']  . $person['role']  . ", "; } ?></div>
+                    <div><h2>Cast: </h2> <?php foreach($movie['cast'] as $person){ echo $person['firstname'] . ' ' . $person['lastname'] . $person['role']  . ", "; } ?></div>
+                </div>
+                <div class="director">
                     <div><h2>Directors: </h2> <?php foreach($movie['director'] as $person){ echo $person['firstname']; } ?></div>
                 </div>
                 <div class="img">

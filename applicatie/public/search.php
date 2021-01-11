@@ -22,7 +22,7 @@
     {
         global $dbh;
 
-        $query = $dbh -> prepare("SELECT genre_name FROM genre ORDER BY genre_name");
+        $query = $dbh -> prepare("SELECT g.genre_name FROM Genre g WHERE g.genre_name IN (SELECT mg.genre_name FROM Movie m JOIN Movie_Genre mg ON m.movie_id = mg.movie_id WHERE m.title LIKE '%$zoekwoord%') GROUP BY g.genre_name");
 
         $query->execute();
 
@@ -53,8 +53,11 @@
 
         foreach($genres as $genre)
         {
-            
-            $html = "";
+            $genrenaam = $genre['genre_name'];
+            $label = "<label for=$genrenaam>$genrenaam</label>";
+            $input = "<input id=$genrenaam type='checkbox'";
+
+            $html = $html . $label . $input;
         } 
         
         return $html;
@@ -62,8 +65,7 @@
 
     $filmlijst = getMovies($_GET['searchMessage']);
 
-    //$genrelijst = getGenres();
-    
+    $genrelijst = getGenres($_GET['searchMessage']);
 ?>
 
 <!DOCTYPE php>
@@ -82,7 +84,7 @@
 
             <form class="filterlist">
                 <div class="genres">
-
+                    <?=genresNaarHTML($genrelijst)?>
                 </div>
 
                 <div class="jaar">
@@ -92,15 +94,6 @@
                 <div class="regisseur">
                     
                 </div>
-
-                <label for="18+">18+</label>
-                <input id="18+" type="checkbox">
-                <label for="actie">actie</label>
-                <input id="actie" type="checkbox">
-                <label for="horror">horror</label>
-                <input id="horror" type="checkbox">
-                <label for="geweld">geweld</label>
-                <input id="geweld" type="checkbox">
 
                 <label for="pubyearmin">publicatie jaar minimum</label>
                 <input type="text" id="pubyearmin">
