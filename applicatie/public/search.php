@@ -26,14 +26,10 @@
 
         //extra filters toevoegen op de command
         if(!empty($jaarmin)){
-            var_dump($jaarmin);
-
             $whereStatement = "$whereStatement AND publication_year > $jaarmin";
         }
 
         if(!empty($jaarmax)){
-            var_dump($jaarmax);
-
             $whereStatement = "$whereStatement AND publication_year < $jaarmax";
         }
 
