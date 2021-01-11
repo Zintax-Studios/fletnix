@@ -4,20 +4,62 @@
     require("phpfunction/SQL_connection.php");
     require("shared/header.html");
 
+    #region parameters
+    //get parameters from search
+    $searchInput = $_GET['searchMessage'];
+    $jaarmin = $_GET['pubyearmin'];
+    $jaarmax = $_GET['pubyearmax'];
+    $regisseur = $_GET['reg'];
+
+    $selectedGenres = [];
+    #endregion
+
     //gets
-    function getMovies($zoekwoord)
+    function getMovies($zoekwoord, $jaarmin, $jaarmax, $regisseur)
     {
+        //hier moet ook genre toegevoegt worden aan de where
         global $dbh;
 
-        $query = $dbh -> prepare("SELECT title FROM Movie WHERE title like '%$zoekwoord%' GROUP BY title");
+        $command = "SELECT movie_id, title FROM Movie WHERE movie_id < 10000 $groupStatement";
+        $whereStatement = "";
+        $groupStatement = "GROUP BY movie_id, title";
+
+        //extra filters toevoegen op de command
+        if(!empty($jaarmin)){
+            var_dump($jaarmin);
+
+            $whereStatement = "$whereStatement AND publication_year > $jaarmin";
+        }
+
+        if(!empty($jaarmax)){
+            var_dump($jaarmax);
+
+            $whereStatement = "$whereStatement AND publication_year < $jaarmax";
+        }
+
+        if(!empty($regisseur)){
+            var_dump($regisseur);
+        }
+
+        //queryen
+        if($zoekwoord == ''){
+            $query = $dbh -> prepare($command);
+        }
+        else{
+            $query = $dbh -> prepare("SELECT movie_id, title FROM Movie WHERE title like '%$zoekwoord%' $groupStatement");
+        }
+
 
         $query->execute();
 
         $result = $query->fetchALL();
 
+        var_dump($whereStatement);
+
         return $result;
     }
 
+    //pas dit aan om de filmlijst te gebruiken in de plaats van get zoekwoord
     function getGenres($zoekwoord)
     {
         global $dbh;
@@ -53,19 +95,21 @@
 
         foreach($genres as $genre)
         {
+            //label and input are connected via "for" and "id"
             $genrenaam = $genre['genre_name'];
             $label = "<label for=$genrenaam>$genrenaam</label>";
-            $input = "<input id=$genrenaam type='checkbox'";
+            $input = "<input type='checkbox' name='$genrenaam' id='$genrenaam'>";
 
             $html = $html . $label . $input;
-        } 
+        }
         
         return $html;
     }
 
-    $filmlijst = getMovies($_GET['searchMessage']);
+    $filmlijst = getMovies($searchInput, $jaarmin, $jaarmax, $regisseur);
 
-    $genrelijst = getGenres($_GET['searchMessage']);
+    //this needs to use the movie list instead of just the searchword
+    $genrelijst = getGenres($searchInput);
 ?>
 
 <!DOCTYPE php>
@@ -82,26 +126,29 @@
                 <?=filmsNaarHTMl($filmlijst)?>
             </div>
 
-            <form class="filterlist">
+            <form class="filterlist" action="search.php">
                 <div class="genres">
                     <?=genresNaarHTML($genrelijst)?>
                 </div>
 
                 <div class="jaar">
+                    <label for="pubyearmin">publicatie jaar minimum</label>
+                    <input type="text" name="pubyearmin" id="pubyearmin">
+
+                    <label for="pubyearmax">publicatie jaar maximum</label>
+                    <input type="text" name="pubyearmax" id="pubyearmax">
 
                 </div>
 
                 <div class="regisseur">
-                    
+                    <label for="reg">regisseur</label>
+                    <input id="reg" name="reg" type="text">
                 </div>
 
-                <label for="pubyearmin">publicatie jaar minimum</label>
-                <input type="text" id="pubyearmin">
-                <label for="pubyearmax">publicatie jaar maximum</label>
-                <input type="text" id="pubyearmax">
+                <div class="search">
+                    <input id="go" name="searchMessage" value=<?=$searchInput?>>
+                </div>
 
-                <label for="reg">regisseur</label>
-                <input id="reg" type="text">
                 <input class="submitbutton" type="submit" value="filter">
             </form>
         </main>
