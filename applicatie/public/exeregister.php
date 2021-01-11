@@ -5,6 +5,8 @@
 
     session_start();
 
+    $return = true;
+
     $email = $_POST['email'];
     $lastname = $_POST['lastname'];
     $firstname = $_POST['firstname'];
@@ -18,12 +20,12 @@
 
     foreach($_POST as $data){
         if($data == ''){
-            err('alles moet ingevult zijn!');
+            error('alles moet ingevult zijn!');
         }
     }
 
     if($password != $password2){
-        err("Wachtwoorden komen niet overeen!");
+        error("Wachtwoorden komen niet overeen!");
     }
 
     $startdate = date("Y/m/d");
@@ -40,7 +42,7 @@
             $enddate = date("Y/m/d", strtotime("+4 Months"));
             break;
         default:
-            err("Kies een abbonement");
+            error("Kies een abbonement");
     }
 
     switch($payment_method){
@@ -51,7 +53,7 @@
         case 'Visa':
             break;
         default:
-            err('kies een betaalmethode');
+            error('kies een betaalmethode');
     }
 
     $password = hash('crc32', $password);
@@ -77,14 +79,20 @@
     try {
         $dbh->query($sql);
     } catch(Exception $e) {
-        err('account already exists');
+        error('account already exists');
     }
 
-    function err($error){
-        $_SESSION['error'] = $error;
-        header("Location: register.php");
+    function error($error){
+        global $return;
+        if($return){
+            $_SESSION['error'] = $error;
+            header("Location: register.php");
+            $return = false;
+        }
     }
 
-    header("Location: login.php");
+    if($return){
+        header("Location: login.php");
+    }
 ?>
     

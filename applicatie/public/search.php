@@ -49,7 +49,6 @@
             $query = $dbh -> prepare("SELECT movie_id, title FROM Movie WHERE title like '%$zoekwoord%' $groupStatement");
         }
 
-
         $query->execute();
 
         $result = $query->fetchALL();
@@ -82,7 +81,7 @@
             $image_src = 'images/cover3.jpg';
             $image = "<img src=$image_src alt='img'>";
         
-            $link = 'https://discord.gg/3SjzP4cj'; //:)
+            $link = 'product.php?id=' . $film['movie_id']; //:)
         
             $html = $html . "<div><a href=$link>" . $film['title'] . $image . "</a></div>";
         }        

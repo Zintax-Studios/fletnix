@@ -5,6 +5,10 @@
     justify-content: space-between;
 }
 
+.filmlist div{
+    max-width: 17%;
+}
+
 .filmlist div a{
     margin: 1%;
     background-color: grey;
@@ -12,6 +16,11 @@
     color: white;
     display: flex;
     flex-direction: column;
+}
+
+.filmlist div a img {
+    max-width: 100%;
+    max-height: 100%;
 }
 
 main{
