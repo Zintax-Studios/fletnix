@@ -20,9 +20,9 @@
         //hier moet ook genre toegevoegt worden aan de where
         global $dbh;
 
-        $command = "SELECT movie_id, title FROM Movie WHERE movie_id < 10000 $groupStatement";
         $whereStatement = "";
         $groupStatement = "GROUP BY movie_id, title";
+        $command = "SELECT movie_id, title FROM Movie WHERE movie_id < 10000 $groupStatement";
 
         //extra filters toevoegen op de command
         if(!empty($jaarmin)){
@@ -39,6 +39,8 @@
 
         if(!empty($regisseur)){
             var_dump($regisseur);
+
+            //deze is kut, want query
         }
 
         //queryen
