@@ -26,7 +26,7 @@
         }
 
         // Get the login data
-        $username = $_POST['username'];
+        $email = $_POST['email'];
         $password = $_POST['password'];
 
         // Hash the password
@@ -34,9 +34,9 @@
 
         // Get the login data from the SQL server
         $sql = "
-            SELECT user_name, password
+            SELECT customer_mail_address, password
             FROM Customer
-            WHERE password = '$password' AND user_name = '$username'
+            WHERE password = '$password' AND customer_mail_address = '$email'
         ";
         try{
             $data = $dbh->query($sql);
@@ -47,13 +47,13 @@
         $rij = $data->fetch();
 
         // Chech if the login info is the same
-        if($username != $rij['user_name'] || $password != $rij['password']){
+        if($email != $rij['customer_mail_address'] || $password != $rij['password']){
             err('foute inlog gegevens');
         
         }
         else{
             $loggedin = true;
-            $_SESSION['username'] = $username;
+            $_SESSION['email'] = $email;
             $_SESSION['password'] = $password;
         }
 
