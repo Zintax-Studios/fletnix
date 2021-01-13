@@ -21,37 +21,44 @@
         global $dbh;
 
         $whereStatement = "";
-        $groupStatement = "GROUP BY movie_id, title";
-        $command = "SELECT movie_id, title FROM Movie WHERE movie_id < 10000 $groupStatement";
+        $command = "SELECT movie_id, title FROM Movie WHERE movie_id < 10000";
 
         //extra filters toevoegen op de command
         if(!empty($jaarmin)){
-            $whereStatement = "$whereStatement AND publication_year > $jaarmin";
+            $whereStatement = "$whereStatement AND YEAR(publication_year) > $jaarmin";
         }
 
         if(!empty($jaarmax)){
-            $whereStatement = "$whereStatement AND publication_year < $jaarmax";
+            $whereStatement = "$whereStatement AND YEAR(publication_year) < $jaarmax";
         }
 
         if(!empty($regisseur)){
-            var_dump($regisseur);
-
+            $whereStatement = "$whereStatement AND (p.firstname + ' ' + p.lastname) like '%$regisseur%'";
             //deze is kut, want query
         }
 
+        if(!empty($zoekwoord)){
+            $whereStatement = "$whereStatement AND m.title like '%$zoekwoord%'";
+        }
+
+        //remove first 'AND' from query to prevent error with where statement starting with "AND"
+        if(!empty($whereStatement)){
+            $whereStatement = (substr($whereStatement, 4));
+        }
+
         //queryen
-        if($zoekwoord == ''){
-            $query = $dbh -> prepare($command);
-        }
-        else{
-            $query = $dbh -> prepare("SELECT movie_id, title FROM Movie WHERE title like '%$zoekwoord%' $groupStatement");
-        }
+        $query = $dbh -> prepare("SELECT m.movie_id, m.title, (p.firstname + ' ' + p.lastname) FROM Movie_Director md join Movie m on md.movie_id = m.movie_id join Person p on md.person_id = p.person_id WHERE $whereStatement");
+
+        var_dump($query);
 
         $query->execute();
 
         $result = $query->fetchALL();
 
-        var_dump($whereStatement);
+        var_dump($result);
+
+        //zoekwoord, jaarmin and jaarmax have been filtered
+        //now filter regisseur and genre
 
         return $result;
     }
