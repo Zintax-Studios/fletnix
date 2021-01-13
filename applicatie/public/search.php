@@ -21,7 +21,6 @@
         global $dbh;
 
         $whereStatement = "";
-        $command = "SELECT movie_id, title FROM Movie WHERE movie_id < 10000";
 
         //extra filters toevoegen op de command
         if(!empty($jaarmin)){
@@ -57,8 +56,10 @@
 
         var_dump($result);
 
-        //zoekwoord, jaarmin and jaarmax have been filtered
-        //now filter regisseur and genre
+        //now filter genre from the array
+        //query every movie based on id
+        //request there genres
+        //if a genre(s) is selected, delete all movies from array that don't have the correct genre(s)
 
         return $result;
     }
@@ -81,15 +82,20 @@
     function filmsNaarHTMl($films) {
         $html = '';
         
-        foreach($films as $film)
-        {
-            $image_src = 'images/cover3.jpg';
-            $image = "<img src=$image_src alt='img'>";
-        
-            $link = 'product.php?id=' . $film['movie_id']; //:)
-        
-            $html = $html . "<div><a href=$link>" . $film['title'] . $image . "</a></div>";
-        }        
+        if(empty($films)){
+            $html = 'Geen films gevonden! Controleer je spelling of probeer een ander zoekterm';
+        }
+        else{
+            foreach($films as $film)
+            {
+                $image_src = 'images/cover3.jpg';
+                $image = "<img src=$image_src alt='img'>";
+            
+                $link = 'product.php?id=' . $film['movie_id']; //:)
+            
+                $html = $html . "<div><a href=$link>" . $film['title'] . $image . "</a></div>";
+            } 
+        }       
         
         return $html;
     }  
