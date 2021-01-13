@@ -15,7 +15,7 @@
     #endregion
 
     //get all selected genres
-    if(isset($_GET['genre'])){    
+    if(isset($_GET['genre'])){
         foreach($_GET['genre'] as $value){
             $selectedGenres[] = $value;
         }
@@ -72,17 +72,33 @@
     }
 
     //pas dit aan om de filmlijst te gebruiken in de plaats van get zoekwoord
-    function getGenres($zoekwoord)
+    function getGenres($lijst)
     {
-        global $dbh;
+        $list = array();
 
-        $query = $dbh -> prepare("SELECT g.genre_name FROM Genre g WHERE g.genre_name IN (SELECT mg.genre_name FROM Movie m JOIN Movie_Genre mg ON m.movie_id = mg.movie_id WHERE m.title LIKE '%$zoekwoord%') GROUP BY g.genre_name");
+        foreach($lijst as $item){
 
-        $query->execute();
+            global $dbh;
 
-        $result = $query->fetchALL();
+            $current = $item['movie_id'];
+            $query = $dbh -> prepare("SELECT mg.genre_name FROM movie m join Movie_Genre mg on m.movie_id = mg.movie_id where m.movie_id = $current group by genre_name");
 
-        return $result;
+            $query->execute();
+
+            $result = $query->fetchALL();
+
+            if(!empty($result)){
+                foreach($result as $thing){
+                    if(!in_array($thing, $list)){
+                        $list[] = $thing;
+                    }
+                }
+            }
+        }
+
+        var_dump($list);
+
+        return $list;
     }
 
     //tohtmls
@@ -126,7 +142,7 @@
     $filmlijst = getMovies($searchInput, $jaarmin, $jaarmax, $regisseur);
 
     //this needs to use the movie list instead of just the searchword
-    $genrelijst = getGenres($searchInput);
+    $genrelijst = getGenres($filmlijst);
 ?>
 
 <!DOCTYPE php>
