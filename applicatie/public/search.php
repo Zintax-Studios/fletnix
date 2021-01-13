@@ -11,8 +11,17 @@
     $jaarmax = $_GET['pubyearmax'];
     $regisseur = $_GET['reg'];
 
-    $selectedGenres = [];
+    $selectedGenres = array();
     #endregion
+
+    //get all selected genres
+    if(isset($_GET['genre'])){    
+        foreach($_GET['genre'] as $value){
+            $selectedGenres[] = $value;
+        }
+    
+        print_r($selectedGenres);
+    }
 
     //gets
     function getMovies($zoekwoord, $jaarmin, $jaarmax, $regisseur)
@@ -48,18 +57,16 @@
         //queryen
         $query = $dbh -> prepare("SELECT m.movie_id, m.title, (p.firstname + ' ' + p.lastname) FROM Movie_Director md join Movie m on md.movie_id = m.movie_id join Person p on md.person_id = p.person_id WHERE $whereStatement");
 
-        var_dump($query);
-
         $query->execute();
 
         $result = $query->fetchALL();
 
-        var_dump($result);
-
         //now filter genre from the array
-        //query every movie based on id
-        //request there genres
-        //if a genre(s) is selected, delete all movies from array that don't have the correct genre(s)
+        if(!empty($genres)){
+            //query every movie based on id
+            //request there genres
+            //if a genre(s) is selected, delete all movies from array that don't have the correct genre(s)
+        }
 
         return $result;
     }
@@ -91,7 +98,7 @@
                 $image_src = 'images/cover3.jpg';
                 $image = "<img src=$image_src alt='img'>";
             
-                $link = 'product.php?id=' . $film['movie_id']; //:)
+                $link = 'product.php?id=' . $film['movie_id'];
             
                 $html = $html . "<div><a href=$link>" . $film['title'] . $image . "</a></div>";
             } 
@@ -108,7 +115,7 @@
             //label and input are connected via "for" and "id"
             $genrenaam = $genre['genre_name'];
             $label = "<label for=$genrenaam>$genrenaam</label>";
-            $input = "<input type='checkbox' name='$genrenaam' id='$genrenaam'>";
+            $input = "<input type='checkbox' name='genre[]' value='$genrenaam'>";
 
             $html = $html . $label . $input;
         }
