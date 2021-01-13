@@ -20,8 +20,8 @@
                 <h1>Login</h1>
                 <form class="loginform" action="exelogin.php" method="POST">
                     <div>
-                        <label for="UsernameLog">Username</label>
-                        <input id="UsernameLog" type="text" name="username">
+                        <label for="UsernameLog">Email</label>
+                        <input id="UsernameLog" type="text" name="email">
                     </div>
                     <div>
                         <label for="PasswordLog">Password</label>

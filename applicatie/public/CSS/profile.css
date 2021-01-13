@@ -8,8 +8,24 @@
     font-size: 600%;
 }
 
+main{
+    height: 100%;
+}
+
 form{
+    position: relative;
+    top: 10%;
+    left: 35%;
+    width: 30%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+input{
+    margin-top: 2%;
+}
+
+form >div{
+    margin-top: 2%;
 }

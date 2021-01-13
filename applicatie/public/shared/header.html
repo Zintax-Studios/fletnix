@@ -21,11 +21,11 @@
                         </div>
                     </a>
                     <?php
-                    if(isset($_SESSION['username'])){
+                    if(isset($_SESSION['email'])){
                         echo "
                             <a href='profile.php' class='button'>
                                 <div>
-                                    " . $_SESSION['username'] . "
+                                    " . $_SESSION['email'] . "
                                 </div>
                             </a>
                         ";
