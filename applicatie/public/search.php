@@ -19,7 +19,6 @@
         foreach($_GET['genre'] as $value){
             $selectedGenres[] = $value;
         }
-    
         print_r($selectedGenres);
     }
 
@@ -62,10 +61,28 @@
         $result = $query->fetchALL();
 
         //now filter genre from the array
-        if(!empty($genres)){
-            //query every movie based on id
-            //request there genres
-            //if a genre(s) is selected, delete all movies from array that don't have the correct genre(s)
+        global $selectedGenres;
+
+        if(!empty($selectedGenres)){
+            foreach($result as $item){
+                global $dbh;
+
+                $current = $item['movie_id'];
+                $query = $dbh -> prepare("SELECT mg.genre_name FROM movie m join Movie_Genre mg on m.movie_id = mg.movie_id where m.movie_id = $current group by genre_name");
+    
+                $query->execute();
+    
+                $movie = $query->fetchALL();
+
+                var_dump($movie);
+
+                foreach($movie as $element){
+                    if(!in_array($element['genre_name'], $selectedGenres)){
+                        unset($result[key($item)]);
+                        echo "pog";
+                    }
+                }
+            }
         }
 
         return $result;
@@ -95,8 +112,6 @@
                 }
             }
         }
-
-        var_dump($list);
 
         return $list;
     }
