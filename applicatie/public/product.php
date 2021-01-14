@@ -58,7 +58,8 @@
 
 <html>
     <head>
-    <link rel="stylesheet" href="CSS/product.css"/>
+        <?php require 'shared/head.html'?>
+        <link rel="stylesheet" href="CSS/product.css"/>
     </head>
 
     <body>

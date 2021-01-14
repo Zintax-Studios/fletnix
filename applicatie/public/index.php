@@ -55,12 +55,10 @@
     }
 ?>
 
-<!DOCTYPE php>
+<!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="icon" href="images/logo.png">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>Fletnix - Main</title>
+        <?php require 'shared/head.html'?>
         <link rel="stylesheet" href="CSS/index.css"/>
     </head>
 

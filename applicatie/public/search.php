@@ -12,6 +12,12 @@
     if(isset($_GET['searchMessage'])){
         $searchInput = $_GET['searchMessage'];
         $pageLink .= "&searchMessage=$searchInput";
+        if($searchInput == ''){
+            header('Location: index.php');
+        }
+    }
+    else{
+        header('Location: index.php');
     }
     if(isset($_GET['pubyearmin'])){
         $jaarmin = $_GET['pubyearmin'];
@@ -98,11 +104,11 @@
         $startingRow = $page * 100;
 
         //remove first 'AND' from query to prevent error with where statement starting with "AND"
-        if(!empty($whereStatement)){
-            $whereStatement = (substr($whereStatement, 4));
+        if(empty($whereStatement)){
             $query = $dbh -> prepare("SELECT m.movie_id, m.title, (p.firstname + ' ' + p.lastname) FROM Movie_Director md join Movie m on md.movie_id = m.movie_id join Person p on md.person_id = p.person_id ORDER BY m.movie_id OFFSET $startingRow ROWS FETCH NEXT 100 ROWS ONLY");
         }
         else{
+            $whereStatement = (substr($whereStatement, 4));
             $query = $dbh -> prepare("SELECT m.movie_id, m.title, (p.firstname + ' ' + p.lastname) FROM Movie_Director md join Movie m on md.movie_id = m.movie_id join Person p on md.person_id = p.person_id WHERE $whereStatement ORDER BY m.movie_id OFFSET $startingRow ROWS FETCH NEXT 100 ROWS ONLY");
         }
 
@@ -180,12 +186,10 @@
     $genrelijst = getGenres($filmlijst);
 ?>
 
-<!DOCTYPE php>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="icon" href="images/logo.png">
-    <meta http-equiv="Content-Type" content="text/php; charset=utf-8">
-    <title>Fletnix - Zoek</title>
+    <head>
+        <?php require 'shared/head.html'?>
     <link rel="stylesheet" href="CSS/search.css">
 </head>
     <body>

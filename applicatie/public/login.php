@@ -1,14 +1,12 @@
-<!DOCTYPE php>
+<!DOCTYPE html>
 
 <?php
     session_start();
 ?>
 
 <html lang="en">
-    <head>
-        <link rel="icon" href="images/logo.png">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>Fletnix - Login</title>
+    <head>    
+        <?php require 'shared/head.html'?>
         <link rel="stylesheet" href="CSS/login.css">
     </head>
     <body>
@@ -35,7 +33,7 @@
                         }
                     ?>
                 </form>
-                <a href='register.php'>Nog geen account?</a>
+                <a href='register.php' class='registerlink'>Nog geen account?</a>
         </main>
 
         <footer>

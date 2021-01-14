@@ -1,4 +1,4 @@
-<!DOCTYPE php>
+<!DOCTYPE html>
 
 <?php
     session_start();
@@ -6,9 +6,7 @@
 
 <php lang="en">
     <head>
-        <link rel="icon" href="images/logo.png">
-        <meta http-equiv="Content-Type" content="text/php; charset=utf-8">
-        <title>Fletnix - Film</title>
+        <?php require 'shared/head.html'?>
         <link rel="stylesheet" href="CSS/player.css"/>
     </head>
 
