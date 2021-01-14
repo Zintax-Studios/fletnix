@@ -70,8 +70,10 @@
                 <div class="title">
                     <h1><?php echo $movie['title']; ?></h1>
                     <?php echo $movie['description']; ?>
-                    <h2>Year</h2>
+                    <h2>Jaar</h2>
                     <?php echo $movie['publication_year']; ?>
+                    <h2>Duur</h2>
+                    <?php echo $movie['duration']; ?>
                 </div>
                 <div class="info">
                 </div>
@@ -79,7 +81,7 @@
                     <div><h2>Cast: </h2> <?php foreach($movie['cast'] as $person){ echo $person['firstname'] . ' ' . $person['lastname'] . $person['role']  . ", "; } ?></div>
                 </div>
                 <div class="director">
-                    <div><h2>Directors: </h2> <?php foreach($movie['director'] as $person){ echo $person['firstname']; } ?></div>
+                    <div><h2>Regisseurs: </h2> <?php foreach($movie['director'] as $person){ echo $person['firstname']; } ?></div>
                 </div>
                 <div class="img">
                     <img src="images/placeholder.png">
