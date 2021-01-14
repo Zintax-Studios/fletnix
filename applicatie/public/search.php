@@ -46,20 +46,13 @@
         $page = 0;
     }
 
-    //gets
-    function getMovies()
-    {
-        //hier moet ook genre toegevoegt worden aan de where
-        global $dbh;
+    function getWhereStatement(){
+        $whereStatement = "";
 
-        global $page;
         global $searchInput;
         global $jaarmax;
         global $jaarmin;
         global $regisseur;
-        global $selectedGenres;
-
-        $whereStatement = "";
 
         //extra filters toevoegen op de command
         if(!empty($jaarmin)){
@@ -78,6 +71,20 @@
         if(!empty($searchInput)){
             $whereStatement = "$whereStatement AND m.title like '%$searchInput%'";
         }
+
+        return $whereStatement;
+    }
+
+    //gets
+    function getMovies()
+    {
+        //hier moet ook genre toegevoegt worden aan de where
+        global $dbh;
+
+        global $page;
+        global $selectedGenres;
+
+        $whereStatement = getWhereStatement();
 
         if(!empty($selectedGenres)){
             $list = '';
@@ -98,6 +105,8 @@
         //queryen
         $query = $dbh -> prepare("SELECT m.movie_id, m.title, (p.firstname + ' ' + p.lastname) FROM Movie_Director md join Movie m on md.movie_id = m.movie_id join Person p on md.person_id = p.person_id WHERE $whereStatement ORDER BY m.movie_id OFFSET $startingRow ROWS FETCH NEXT 100 ROWS ONLY");
 
+        var_dump($query);
+
         $query->execute();
 
         $result = $query->fetchALL();
@@ -106,31 +115,23 @@
     }
 
     //pas dit aan om de filmlijst te gebruiken in de plaats van get zoekwoord
-    function getGenres($lijst)
+    function getGenres()
     {
-        $list = array();
 
-        foreach($lijst as $item){
-
-            global $dbh;
-
-            $current = $item['movie_id'];
-            $query = $dbh -> prepare("SELECT mg.genre_name FROM movie m join Movie_Genre mg on m.movie_id = mg.movie_id where m.movie_id = $current group by genre_name");
-
-            $query->execute();
-
-            $result = $query->fetchALL();
-
-            if(!empty($result)){
-                foreach($result as $thing){
-                    if(!in_array($thing, $list)){
-                        $list[] = $thing;
-                    }
-                }
-            }
+        $whereStatement = getWhereStatement();
+        if(!empty($whereStatement)){
+            $whereStatement = (substr($whereStatement, 4));
         }
 
-        return $list;
+        global $dbh;
+
+        $query = $dbh -> prepare("SELECT genre_name FROM Movie_Genre WHERE movie_id IN (SELECT movie_id FROM Movie m WHERE $whereStatement) group by genre_name");
+
+        $query->execute();
+
+        $result = $query->fetchALL();
+
+        return $result;
     }
 
     //tohtmls
@@ -188,6 +189,7 @@
     <body>
         <main>
             <?php echoPage('search.php', $pageLink) ?>
+            <div class='maingrid'>
             <div class="filmlist">
                 <?=filmsNaarHTMl($filmlijst)?>
             </div>
@@ -217,6 +219,7 @@
 
                 <input class="submitbutton" type="submit" value="filter">
             </form>
+            </div>
             <?php echoPage('search.php', $pageLink) ?>
         </main>
 
