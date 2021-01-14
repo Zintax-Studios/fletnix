@@ -39,6 +39,7 @@
         global $jaarmax;
         global $jaarmin;
         global $regisseur;
+        global $selectedGenres;
 
         $whereStatement = "";
 
@@ -60,6 +61,15 @@
             $whereStatement = "$whereStatement AND m.title like '%$searchInput%'";
         }
 
+        if(!empty($selectedGenres)){
+            $list = '';
+            foreach($selectedGenres as $genre){
+                $list = "$list, '$genre'";
+            }
+            $list = substr($list, 2);
+            $whereStatement = "$whereStatement AND m.movie_id IN (SELECT movie_id FROM Movie_Genre WHERE genre_name IN ($list))";
+        }
+
         //remove first 'AND' from query to prevent error with where statement starting with "AND"
         if(!empty($whereStatement)){
             $whereStatement = (substr($whereStatement, 4));
@@ -71,30 +81,6 @@
         $query->execute();
 
         $result = $query->fetchALL();
-
-        //now filter genre from the array
-        global $selectedGenres;
-
-        if(!empty($selectedGenres)){
-            foreach($result as $item){
-                global $dbh;
-
-                $current = $item['movie_id'];
-                $query = $dbh -> prepare("SELECT mg.genre_name FROM movie m join Movie_Genre mg on m.movie_id = mg.movie_id where m.movie_id = $current group by genre_name");
-    
-                $query->execute();
-    
-                $movie = $query->fetchALL();
-
-                foreach($movie as $element){
-                    if(!in_array($element['genre_name'], $selectedGenres)){
-                        echo key($item);
-                        unset($result[key($item)]);
-                        echo "pog";
-                    }
-                }
-            }
-        }
 
         return $result;
     }

@@ -17,8 +17,6 @@
     $result = $querry->fetchAll();
 
     $person = $result[0];
-
-    var_dump($person);
 ?>
 
 
