@@ -2,12 +2,28 @@
     session_start();
 
     require("phpfunction/SQL_connection.php");
+    require("phpfunction/page.php");
+
+    if(isset($_GET['page'])){
+        $page = $_GET['page'];
+        if($page < 0){
+            header("Location: index.php?page=0");
+        }
+    }
 
     function getMovies()
     {
         global $dbh;
+        global $page;
 
-        $query = $dbh -> prepare('SELECT TOP 100 * FROM Movie');
+        if(isset($page)){
+            $startingRow = $page * 100;
+        }
+        else{
+            $startingRow = 0;
+        }
+
+        $query = $dbh -> prepare("SELECT * FROM Movie ORDER BY movie_id OFFSET $startingRow ROWS FETCH NEXT 100 ROWS ONLY");
 
         $query->execute();
 
@@ -17,6 +33,10 @@
     }
 
     $filmlijst = getMovies();
+
+    if(empty($filmlijst)){
+        header('Location: index.php?page=0');
+    }
 
     function filmsNaarHTMl($films) {
         $html = '';
@@ -52,6 +72,7 @@
         <main>
             <h1> Films from A to Z </h1>
             <!--Recent bekeken-->
+            <?php echoPage('index.php', ''); ?>
             <div class ="filmlist">
                 <?=filmsNaarHTMl($filmlijst)?>
             </div>
@@ -63,6 +84,8 @@
             <!--films met willekeurig genre #2-->
 
             <!--films met willekeurig genre #3-->
+
+            <?php echoPage('index.php', ''); ?>
         </main>
 
         <footer>

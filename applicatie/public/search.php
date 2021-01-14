@@ -3,20 +3,27 @@
 
     require("phpfunction/SQL_connection.php");
     require("shared/header.html");
+    require("phpfunction/page.php");
+
+    $pageLink = '';
 
     #region parameters
     //get parameters from search
     if(isset($_GET['searchMessage'])){
         $searchInput = $_GET['searchMessage'];
+        $pageLink .= "&searchMessage=$searchInput";
     }
     if(isset($_GET['pubyearmin'])){
         $jaarmin = $_GET['pubyearmin'];
+        $pageLink .= "&pubyearmin=$jaarmin";
     }
     if(isset($_GET['pubyearmax'])){
         $jaarmax = $_GET['pubyearmax'];
+        $pageLink .= "&pubyearmax=$jaarmax";
     }
     if(isset($_GET['reg'])){
         $regisseur = $_GET['reg'];
+        $pageLink .= "&reg=$regisseur";
     }
 
     $selectedGenres = array();
@@ -29,12 +36,23 @@
         }
     }
 
+    if(isset($_GET['page'])){
+        $page = $_GET['page'];
+        if($page < 0){
+            header("Location: search.php?page=0$pageLink");
+        }
+    }
+    else{
+        $page = 0;
+    }
+
     //gets
     function getMovies()
     {
         //hier moet ook genre toegevoegt worden aan de where
         global $dbh;
 
+        global $page;
         global $searchInput;
         global $jaarmax;
         global $jaarmin;
@@ -75,8 +93,10 @@
             $whereStatement = (substr($whereStatement, 4));
         }
 
+        $startingRow = $page * 100;
+
         //queryen
-        $query = $dbh -> prepare("SELECT TOP 100 m.movie_id, m.title, (p.firstname + ' ' + p.lastname) FROM Movie_Director md join Movie m on md.movie_id = m.movie_id join Person p on md.person_id = p.person_id WHERE $whereStatement");
+        $query = $dbh -> prepare("SELECT m.movie_id, m.title, (p.firstname + ' ' + p.lastname) FROM Movie_Director md join Movie m on md.movie_id = m.movie_id join Person p on md.person_id = p.person_id WHERE $whereStatement ORDER BY m.movie_id OFFSET $startingRow ROWS FETCH NEXT 100 ROWS ONLY");
 
         $query->execute();
 
@@ -167,6 +187,7 @@
 </head>
     <body>
         <main>
+            <?php echoPage('search.php', $pageLink) ?>
             <div class="filmlist">
                 <?=filmsNaarHTMl($filmlijst)?>
             </div>
@@ -196,6 +217,7 @@
 
                 <input class="submitbutton" type="submit" value="filter">
             </form>
+            <?php echoPage('search.php', $pageLink) ?>
         </main>
 
         <footer>

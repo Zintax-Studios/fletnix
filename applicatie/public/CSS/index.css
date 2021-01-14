@@ -39,3 +39,15 @@ html{
 h1{
     color: white;
 }
+
+.page{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.page h2{
+    margin-left: 5%;
+    margin-right: 5%;
+    color: white;
+}
