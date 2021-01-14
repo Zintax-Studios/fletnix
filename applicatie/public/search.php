@@ -88,15 +88,19 @@
             $whereStatement = "$whereStatement AND m.movie_id IN (SELECT movie_id FROM Movie_Genre WHERE genre_name IN ($list))";
         }
 
+        $startingRow = $page * 100;
+
         //remove first 'AND' from query to prevent error with where statement starting with "AND"
         if(!empty($whereStatement)){
             $whereStatement = (substr($whereStatement, 4));
+            $query = $dbh -> prepare("SELECT m.movie_id, m.title, (p.firstname + ' ' + p.lastname) FROM Movie_Director md join Movie m on md.movie_id = m.movie_id join Person p on md.person_id = p.person_id ORDER BY m.movie_id OFFSET $startingRow ROWS FETCH NEXT 100 ROWS ONLY");
+        }
+        else{
+            $query = $dbh -> prepare("SELECT m.movie_id, m.title, (p.firstname + ' ' + p.lastname) FROM Movie_Director md join Movie m on md.movie_id = m.movie_id join Person p on md.person_id = p.person_id WHERE $whereStatement ORDER BY m.movie_id OFFSET $startingRow ROWS FETCH NEXT 100 ROWS ONLY");
         }
 
-        $startingRow = $page * 100;
-
         //queryen
-        $query = $dbh -> prepare("SELECT m.movie_id, m.title, (p.firstname + ' ' + p.lastname) FROM Movie_Director md join Movie m on md.movie_id = m.movie_id join Person p on md.person_id = p.person_id WHERE $whereStatement ORDER BY m.movie_id OFFSET $startingRow ROWS FETCH NEXT 100 ROWS ONLY");
+        
 
         $query->execute();
 
