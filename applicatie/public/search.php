@@ -6,10 +6,18 @@
 
     #region parameters
     //get parameters from search
-    $searchInput = $_GET['searchMessage'];
-    $jaarmin = $_GET['pubyearmin'];
-    $jaarmax = $_GET['pubyearmax'];
-    $regisseur = $_GET['reg'];
+    if(isset($_GET['searchMessage'])){
+        $searchInput = $_GET['searchMessage'];
+    }
+    if(isset($_GET['pubyearmin'])){
+        $jaarmin = $_GET['pubyearmin'];
+    }
+    if(isset($_GET['pubyearmax'])){
+        $jaarmax = $_GET['pubyearmax'];
+    }
+    if(isset($_GET['reg'])){
+        $regisseur = $_GET['reg'];
+    }
 
     $selectedGenres = array();
     #endregion
@@ -19,24 +27,28 @@
         foreach($_GET['genre'] as $value){
             $selectedGenres[] = $value;
         }
-        print_r($selectedGenres);
     }
 
     //gets
-    function getMovies($zoekwoord, $jaarmin, $jaarmax, $regisseur)
+    function getMovies()
     {
         //hier moet ook genre toegevoegt worden aan de where
         global $dbh;
+
+        global $searchInput;
+        global $jaarmax;
+        global $jaarmin;
+        global $regisseur;
 
         $whereStatement = "";
 
         //extra filters toevoegen op de command
         if(!empty($jaarmin)){
-            $whereStatement = "$whereStatement AND YEAR(publication_year) > $jaarmin";
+            $whereStatement = "$whereStatement AND publication_year > $jaarmin";
         }
 
         if(!empty($jaarmax)){
-            $whereStatement = "$whereStatement AND YEAR(publication_year) < $jaarmax";
+            $whereStatement = "$whereStatement AND publication_year < $jaarmax";
         }
 
         if(!empty($regisseur)){
@@ -44,8 +56,8 @@
             //deze is kut, want query
         }
 
-        if(!empty($zoekwoord)){
-            $whereStatement = "$whereStatement AND m.title like '%$zoekwoord%'";
+        if(!empty($searchInput)){
+            $whereStatement = "$whereStatement AND m.title like '%$searchInput%'";
         }
 
         //remove first 'AND' from query to prevent error with where statement starting with "AND"
@@ -74,10 +86,9 @@
     
                 $movie = $query->fetchALL();
 
-                var_dump($movie);
-
                 foreach($movie as $element){
                     if(!in_array($element['genre_name'], $selectedGenres)){
+                        echo key($item);
                         unset($result[key($item)]);
                         echo "pog";
                     }
@@ -154,7 +165,7 @@
         return $html;
     }
 
-    $filmlijst = getMovies($searchInput, $jaarmin, $jaarmax, $regisseur);
+    $filmlijst = getMovies();
 
     //this needs to use the movie list instead of just the searchword
     $genrelijst = getGenres($filmlijst);

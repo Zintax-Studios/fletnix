@@ -18,6 +18,11 @@ main{
     justify-content: space-between;
 }
 
+.filmlist div{
+    max-width: 17%;
+    margin-bottom: 2%;
+}
+
 .filmlist div a{
     margin: 1%;
     background-color: grey;

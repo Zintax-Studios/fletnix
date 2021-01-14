@@ -7,7 +7,7 @@
     {
         global $dbh;
 
-        $query = $dbh -> prepare('SELECT * FROM Movie WHERE movie_id < 1000');
+        $query = $dbh -> prepare('SELECT TOP 100 * FROM Movie');
 
         $query->execute();
 
@@ -50,6 +50,7 @@
         ?>
 
         <main>
+            <h1> Films from A to Z </h1>
             <!--Recent bekeken-->
             <div class ="filmlist">
                 <?=filmsNaarHTMl($filmlijst)?>
