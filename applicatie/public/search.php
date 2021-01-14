@@ -105,8 +105,6 @@
         //queryen
         $query = $dbh -> prepare("SELECT m.movie_id, m.title, (p.firstname + ' ' + p.lastname) FROM Movie_Director md join Movie m on md.movie_id = m.movie_id join Person p on md.person_id = p.person_id WHERE $whereStatement ORDER BY m.movie_id OFFSET $startingRow ROWS FETCH NEXT 100 ROWS ONLY");
 
-        var_dump($query);
-
         $query->execute();
 
         $result = $query->fetchALL();
